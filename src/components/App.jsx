@@ -1,12 +1,12 @@
 import { Component } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
-import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
-import Loader from './Loader/Loader';
+// import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
+// import Loader from './Loader/Loader';
 import Button from './Button/Button';
 import Modal from './Modal/Modal';
-import axios from 'axios';
-import { async } from 'q';
+// import axios from 'axios';
+// import { async } from 'q';
 import { fetchImages } from '../components/Srvice/Fetch';
 // import style from './Style/style.css'
 

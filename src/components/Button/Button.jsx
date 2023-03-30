@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import css from '../Button/Button.module.css';
-import { fetchImages } from '../Srvice/Fetch';
+// import { fetchImages } from '../Srvice/Fetch';
 
 class Button extends Component {
   state = {};
@@ -12,12 +12,12 @@ class Button extends Component {
   };
 
   render() {
-    console.log(this.props.currentValue);
+    // console.log(this.props.currentValue);
     return (
       <button
         type="button"
         className={css.load__moreBtn}
-        onClick={this.loadMore}
+        // onClick={this.loadMore}
       >
         Load more
       </button>

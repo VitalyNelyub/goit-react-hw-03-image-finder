@@ -7,7 +7,7 @@ class Searchbar extends Component {
   };
 
   handleChangeStarch = e => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({ value: e.target.value });
     // this.props.getCurrentFetchValue(e.target.value)
   };

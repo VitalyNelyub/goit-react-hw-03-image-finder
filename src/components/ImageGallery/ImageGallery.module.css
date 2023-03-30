@@ -1,3 +1,10 @@
 .gallery {
-    /* background-color: rgb(53, 120, 179); */
+  max-width: 1300px;
+  padding: 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
 }

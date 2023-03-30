@@ -5,8 +5,9 @@ import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 class ImageGallery extends Component {
   render() {
     return (
-      <ul className={css.gallery}>Gallery ul
-        <ImageGalleryItem />
+      // console.log(this.props.images.id)
+      <ul className={css.gallery}>
+        <ImageGalleryItem images={this.props.images} />
       </ul>
     );
   }

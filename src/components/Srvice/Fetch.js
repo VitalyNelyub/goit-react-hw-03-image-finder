@@ -8,5 +8,6 @@ export async function fetchImages(value) {
     `${BASE_URL}q=${value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=12`
   );
   return apiFecthImages;
+  
   // console.log(apiFecthImages);
 }

@@ -41,13 +41,13 @@ class App extends Component {
       // }}
       >
         <Searchbar getCurrentFetchValue={this.getCurrentFetchValue} />
-        <ImageGallery  images={this.state.images}/>
+        <ImageGallery images={this.state.images} />
 
         {/* <ImageGalleryItem images={this.state.images} /> */}
 
         {/* <Loader /> */}
-        {/* <Button /> */}
-        {/* <Modal /> */}
+        <Button currentValue={this.state.value} />
+        <Modal />
       </div>
     );
   }

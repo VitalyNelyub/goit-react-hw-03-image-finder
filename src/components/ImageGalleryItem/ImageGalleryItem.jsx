@@ -8,7 +8,7 @@ class ImageGalleryItem extends Component {
       return this.props.images.map(img => {
         return (
           <li key={img.id} className={css.gallery__item}>
-            <img src={img.webformatURL} className={css.gallery__img} alt="" />
+            <img src={img.webformatURL} className={css.gallery__img} alt={img.tags} />
           </li>
         );
       });

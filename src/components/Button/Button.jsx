@@ -5,11 +5,16 @@ import css from '../Button/Button.module.css';
 class Button extends Component {
   state = {};
 
-  loadMore = () => {
-    console.log('MOREEEEE');
-    // console.log(fetchImages('subaru'));
-    // fetchImages('subaru');
-  };
+  // loadMore = () => {
+  //   const test = 'subaru';
+  //   // console.log(fetchImages(test))
+  //   console.log('MOREEEEE');
+  //   // console.log(fetchImages('subaru'));
+
+  //   // fetchImages(test).then(data => console.log(data));
+  // };
+
+  // fetchImages();
 
   render() {
     // console.log(this.props.currentValue);
@@ -17,7 +22,7 @@ class Button extends Component {
       <button
         type="button"
         className={css.load__moreBtn}
-        // onClick={this.loadMore}
+        onClick={this.props.loadMore}
       >
         Load more
       </button>

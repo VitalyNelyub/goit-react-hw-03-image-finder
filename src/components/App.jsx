@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     value: '',
     images: null,
-  };
+    page: 1,
+   };
 
   getCurrentFetchValue = currentValue => {
     this.setState({ value: currentValue });
@@ -22,11 +23,24 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
-      fetchImages(this.state.value).then(data =>
+      fetchImages(this.state.value, this.state.page).then(data =>
         this.setState({ images: data.data.hits })
       );
     }
   }
+
+  loadMore = () => {
+    const nextPage = this.state.page + 1;
+    fetchImages(this.state.value, nextPage).then(data => {
+      if (data.data.hits.length === 0) {
+        alert('No more photo');
+      }
+      this.setState(prevState => ({
+        images: [...prevState.images, ...data.data.hits],
+        page: nextPage,
+      }));
+    });
+  };
 
   render() {
     return (
@@ -46,7 +60,7 @@ class App extends Component {
         {/* <ImageGalleryItem images={this.state.images} /> */}
 
         {/* <Loader /> */}
-        <Button currentValue={this.state.value} />
+        <Button currentValue={this.state.value} loadMore={this.loadMore} />
         <Modal />
       </div>
     );

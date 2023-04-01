@@ -8,7 +8,6 @@ class ImageGallery extends Component {
   };
   render() {
     return (
-      // console.log(this.props.images.id)
       <ul className={css.gallery}>
         <ImageGalleryItem
           images={this.props.images}

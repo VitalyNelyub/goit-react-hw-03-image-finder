@@ -7,9 +7,7 @@ class Searchbar extends Component {
   };
 
   handleChangeStarch = e => {
-    // console.log(e.target.value);
     this.setState({ value: e.target.value });
-    // this.props.getCurrentFetchValue(e.target.value)
   };
 
   getInputValue = e => {
@@ -30,8 +28,6 @@ class Searchbar extends Component {
             <input
               className={css.input}
               type="text"
-              //   autocomplete="off"
-              //   autofocus
               placeholder="Search images and photos"
               onChange={this.handleChangeStarch}
               value={this.state.value}

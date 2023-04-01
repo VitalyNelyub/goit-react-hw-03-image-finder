@@ -5,7 +5,6 @@ import css from '../Button/Button.module.css';
 class Button extends Component {
 
   render() {
-    // console.log(this.props.currentValue);
     return (
       <button
         type="button"

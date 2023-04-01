@@ -16,31 +16,32 @@ class App extends Component {
     modalImg: '',
   };
 
-  showModal = (image) => {
-    this.setState({modalImg: image})
-  }
-
-  hideModal = () => {
-     this.setState({modalImg: ''})
-  }
-
-  getCurrentFetchValue = currentValue => {
-    this.setState({ value: currentValue });
-  };
-
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
-      this.setState({ loader: true });
+      this.setState({ loader: true, page: 1, });
       fetchImages(this.state.value, this.state.page).then(data =>
         this.setState({
           images: data.data.hits,
           isHidden: true,
           loader: false,
+          page: 1,
         })
       );
       // .finally(this.setState({ loader: false }));
     }
   }
+
+  showModal = image => {
+    this.setState({ modalImg: image });
+  };
+
+  hideModal = () => {
+    this.setState({ modalImg: '' });
+  };
+
+  getCurrentFetchValue = currentValue => {
+    this.setState({ value: currentValue });
+  };
 
   loadMore = () => {
     const nextPage = this.state.page + 1;
@@ -60,15 +61,16 @@ class App extends Component {
     return (
       <div>
         <Searchbar getCurrentFetchValue={this.getCurrentFetchValue} />
-        {this.state.modalImg && <Modal modalImg={this.state.modalImg} hideModal={this.hideModal } />}
+        {this.state.modalImg && (
+          <Modal modalImg={this.state.modalImg} hideModal={this.hideModal} />
+        )}
 
-        {<ImageGallery images={this.state.images} showModal={ this.showModal}/>}
+        {<ImageGallery images={this.state.images} showModal={this.showModal} />}
 
         {this.state.loader && <Loader />}
         {this.state.isHidden && (
           <Button currentValue={this.state.value} loadMore={this.loadMore} />
         )}
-        
       </div>
     );
   }

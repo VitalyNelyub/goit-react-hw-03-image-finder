@@ -17,8 +17,6 @@ class Modal extends Component {
   };
 
   clickOverlay = e => {
-    // console.log(e.currentTarget);
-    //   console.log(e.target);
       if (e.currentTarget === e.target) {
           this.props.hideModal();
       }

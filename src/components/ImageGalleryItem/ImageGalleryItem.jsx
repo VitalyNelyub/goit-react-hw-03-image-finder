@@ -27,13 +27,14 @@ class ImageGalleryItem extends Component {
       return this.props.images.map(img => {
         return (
           <li key={img.id} className={css.gallery__item}>
-            <a href="#" onClick={this.showImage}>
+            {/* <a href="#" onClick={this.showImage}> */}
               <img
                 src={img.webformatURL}
                 className={css.gallery__img}
                 alt={img.tags}
+                onClick={this.showImage}
               />
-            </a>
+            {/* </a> */}
           </li>
         );
       });

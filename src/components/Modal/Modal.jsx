@@ -19,9 +19,9 @@ class Modal extends Component {
   clickOverlay = e => {
     // console.log(e.currentTarget);
     //   console.log(e.target);
-    if (e.currentTarget === e.target) {
-      this.props.hideModal();
-    }
+      if (e.currentTarget === e.target) {
+          this.props.hideModal();
+      }
   };
   render() {
     return (
@@ -29,7 +29,7 @@ class Modal extends Component {
         <div className={css.modal}>
           <img
             src={this.props.modalImg}
-            alt="photo"
+            // alt="photo"
             className={css.modal__img}
           />
         </div>

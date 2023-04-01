@@ -3,11 +3,17 @@ import css from '../ImageGallery/ImageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 
 class ImageGallery extends Component {
+  state = {
+    currentImage: null,
+  };
   render() {
     return (
       // console.log(this.props.images.id)
       <ul className={css.gallery}>
-        <ImageGalleryItem images={this.props.images} />
+        <ImageGalleryItem
+          images={this.props.images}
+          showModal={this.props.showModal}
+        />
       </ul>
     );
   }

@@ -3,7 +3,7 @@ import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
-// import Modal from './Modal/Modal';
+import Modal from './Modal/Modal';
 import { fetchImages } from '../components/Srvice/Fetch';
 
 class App extends Component {
@@ -13,7 +13,16 @@ class App extends Component {
     page: 1,
     isHidden: false,
     loader: false,
+    modalImg: '',
   };
+
+  showModal = (image) => {
+    this.setState({modalImg: image})
+  }
+
+  hideModal = () => {
+     this.setState({modalImg: ''})
+  }
 
   getCurrentFetchValue = currentValue => {
     this.setState({ value: currentValue });
@@ -29,6 +38,7 @@ class App extends Component {
           loader: false,
         })
       );
+      // .finally(this.setState({ loader: false }));
     }
   }
 
@@ -50,14 +60,15 @@ class App extends Component {
     return (
       <div>
         <Searchbar getCurrentFetchValue={this.getCurrentFetchValue} />
+        {this.state.modalImg && <Modal modalImg={this.state.modalImg} hideModal={this.hideModal } />}
 
-        {<ImageGallery images={this.state.images} />}
+        {<ImageGallery images={this.state.images} showModal={ this.showModal}/>}
 
         {this.state.loader && <Loader />}
         {this.state.isHidden && (
           <Button currentValue={this.state.value} loadMore={this.loadMore} />
         )}
-        {/* <Modal /> */}
+        
       </div>
     );
   }

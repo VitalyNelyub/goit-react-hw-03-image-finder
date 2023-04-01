@@ -18,18 +18,22 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
-      this.setState({ loader: true, page: 1, });
+      this.setState({ loader: true });
       fetchImages(this.state.value, this.state.page).then(data =>
         this.setState({
           images: data.data.hits,
           isHidden: true,
           loader: false,
-          page: 1,
+          // page: 1,
         })
       );
       // .finally(this.setState({ loader: false }));
     }
   }
+
+  resetPage = () => {
+    this.setState({ page: 1 });
+  };
 
   showModal = image => {
     this.setState({ modalImg: image });
@@ -60,7 +64,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Searchbar getCurrentFetchValue={this.getCurrentFetchValue} />
+        <Searchbar getCurrentFetchValue={this.getCurrentFetchValue} resetPage={this.resetPage} />
         {this.state.modalImg && (
           <Modal modalImg={this.state.modalImg} hideModal={this.hideModal} />
         )}

@@ -13,6 +13,10 @@ class Searchbar extends Component {
   getInputValue = e => {
     e.preventDefault();
     const { value } = this.state;
+    if (value !== this.props.currentValue) {
+      this.props.getCurrentFetchValue(value);
+      this.props.resetPage();
+    }
     this.props.getCurrentFetchValue(value);
   };
 

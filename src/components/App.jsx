@@ -1,14 +1,10 @@
 import { Component } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
-// import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
-// import Loader from './Loader/Loader';
+import Loader from './Loader/Loader';
 import Button from './Button/Button';
-import Modal from './Modal/Modal';
-// import axios from 'axios';
-// import { async } from 'q';
+// import Modal from './Modal/Modal';
 import { fetchImages } from '../components/Srvice/Fetch';
-// import style from './Style/style.css'
 
 class App extends Component {
   state = {
@@ -16,6 +12,7 @@ class App extends Component {
     images: null,
     page: 1,
     isHidden: false,
+    loader: false,
   };
 
   getCurrentFetchValue = currentValue => {
@@ -24,17 +21,22 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
+      this.setState({ loader: true });
       fetchImages(this.state.value, this.state.page).then(data =>
-        this.setState({ images: data.data.hits, isHidden: true })
+        this.setState({
+          images: data.data.hits,
+          isHidden: true,
+          loader: false,
+        })
       );
-    } 
+    }
   }
 
   loadMore = () => {
     const nextPage = this.state.page + 1;
     fetchImages(this.state.value, nextPage).then(data => {
       if (data.data.hits.length === 0) {
-        this.setState({isHidden: false})
+        this.setState({ isHidden: false });
         alert('No more photo');
       }
       this.setState(prevState => ({
@@ -46,26 +48,16 @@ class App extends Component {
 
   render() {
     return (
-      <div
-      // style={{
-      //   height: '100vh',
-      //   display: 'flex',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   fontSize: 40,
-      //   color: '#010101',
-      // }}
-      >
+      <div>
         <Searchbar getCurrentFetchValue={this.getCurrentFetchValue} />
-        <ImageGallery images={this.state.images} />
 
-        {/* <ImageGalleryItem images={this.state.images} /> */}
+        {<ImageGallery images={this.state.images} />}
 
-        {/* <Loader /> */}
+        {this.state.loader && <Loader />}
         {this.state.isHidden && (
           <Button currentValue={this.state.value} loadMore={this.loadMore} />
         )}
-        <Modal />
+        {/* <Modal /> */}
       </div>
     );
   }

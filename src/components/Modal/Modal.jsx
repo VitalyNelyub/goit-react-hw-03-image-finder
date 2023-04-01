@@ -29,7 +29,7 @@ class Modal extends Component {
         <div className={css.modal}>
           <img
             src={this.props.modalImg}
-            alt="photo"
+            alt={this.props.modalImg}
             className={css.modal__img}
           />
         </div>
